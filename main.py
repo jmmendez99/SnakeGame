@@ -38,14 +38,12 @@ while game_is_on:
         scoreboard.game_over()
 
     # Detect collision with tail
-    for segment in snake.segments:
-        # This if statement avoids ending the game right away since
+    for segment in snake.segments[1:]:
+        # List slicing avoids ending the game right away since
         # the first segment is the head and our selection statement
         # is checking for that head immediately since it's the first
         # segment in the segments list at the game's start
-        if segment == snake.head:
-            pass
-        elif snake.head.distance(segment) < 10:
+        if snake.head.distance(segment) < 10:
             game_is_on = False
             scoreboard.game_over()
 
